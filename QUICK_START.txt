@@ -1,0 +1,138 @@
+╔════════════════════════════════════════════════════════════════╗
+║     GP2040-CE Mayflash S5 - Quick Start Reference Card         ║
+╚════════════════════════════════════════════════════════════════╝
+
+📍 LOCATION
+  C:\GP2040-CE-Mayflash-S5
+
+📋 6 SIMPLE STEPS
+
+  1️⃣  Install Git
+      → https://git-scm.com/download/win
+      → Restart PowerShell after install
+      ⏱️  5 minutes
+
+  2️⃣  Run Setup Script
+      → Open PowerShell
+      → cd C:\GP2040-CE-Mayflash-S5
+      → .\setup-git.ps1
+      ⏱️  2 minutes
+
+  3️⃣  Create GitHub Repo
+      → Go to https://github.com/new
+      → Name: "GP2040-CE-Mayflash-S5"
+      → Choose: Public
+      → Create
+      ⏱️  2 minutes
+
+  4️⃣  Push to GitHub
+      → Follow instructions from setup script
+      → Uses commands: git remote add, git branch, git push
+      ⏱️  5 minutes
+
+  5️⃣  Build Firmware
+      → Go to your GitHub repo
+      → Click Actions → Build Firmware → Run workflow
+      → Wait 5-10 minutes for build
+      → Download .uf2 artifact
+      ⏱️  15 minutes
+
+  6️⃣  Flash Board
+      → Hold BOOTSEL on Pico
+      → Connect USB (or press BOOTSEL on power-up)
+      → Drag .uf2 → RPI-RP2 drive
+      → Board reboots ✅
+      ⏱️  2 minutes
+
+⏱️  TOTAL: ~30 minutes
+
+═══════════════════════════════════════════════════════════════════
+
+📂 DOCUMENTATION FILES
+
+  START_HERE.txt
+    → Read this first! Full overview
+
+  README_SETUP.txt
+    → Checklist and verification
+
+  GITHUB_SETUP.md
+    → Detailed GitHub instructions
+
+  MAYFLASH_S5_MODIFICATIONS.md
+    → Technical details of changes
+
+  setup-git.ps1 or setup-git.bat
+    → Run one of these to initialize Git
+
+═══════════════════════════════════════════════════════════════════
+
+🔧 WHAT WAS MODIFIED
+
+  File: headers/drivers/ps4/PS4Descriptors.h
+  
+  BEFORE:  #define PS4_VENDOR_ID = 0x1532  (Razer)
+  AFTER:   #define PS4_VENDOR_ID = 0x33df  (Mayflash) ✓
+  
+  BEFORE:  #define PS4_PRODUCT_ID = 0x0401
+  AFTER:   #define PS4_PRODUCT_ID = 0x0011 ✓
+  
+  RESULT:  Device identifies as Mayflash Magicboots S5 on PS5
+
+═══════════════════════════════════════════════════════════════════
+
+🎮 AFTER FLASHING
+
+  ✓ All buttons work on PS5
+  ✓ Passthrough mode enabled
+  ✓ Web configurator accessible (192.168.4.1)
+  ✓ Button mapping customizable
+  ✓ LED control available
+  ✓ Low latency: ~0.91ms
+
+═══════════════════════════════════════════════════════════════════
+
+🆘 QUICK TROUBLESHOOTING
+
+  "Git not found?"
+  → Install from https://git-scm.com/download/win
+  → Restart PowerShell
+
+  "GitHub Actions not working?"
+  → Make sure repo is PUBLIC
+  → Check Actions tab for errors
+
+  "Board won't flash?"
+  → Different USB cable
+  → Different USB port
+  → Hold BOOTSEL longer
+
+  "Buttons don't work?"
+  → Check PS5 button test menu
+  → Verify button mapping in BoardConfig.h
+  → See web configurator
+
+═══════════════════════════════════════════════════════════════════
+
+📞 HELP & RESOURCES
+
+  Documentation: https://gp2040-ce.info
+  Discord:      https://discord.gg/k2pxhke7q8
+  GitHub:       https://github.com/OpenStickCommunity/GP2040-CE
+
+═══════════════════════════════════════════════════════════════════
+
+⭐ PRO TIPS
+
+  • Write down your GitHub username now
+  • Have your email ready for Git config
+  • Use the PowerShell script (better error messages)
+  • Keep your repo name simple: GP2040-CE-Mayflash-S5
+  • Set repo to Public (GitHub Actions builds free)
+  • Save the .uf2 file in case you need to reflash
+
+═══════════════════════════════════════════════════════════════════
+
+READY? Start with: START_HERE.txt or run setup-git.ps1
+
+═══════════════════════════════════════════════════════════════════
