@@ -41,6 +41,7 @@ jobs:
       with:
         name: fsData
         path: ${{github.workspace}}/lib/httpd/
+        required: true
 
     - name: Get core count
       id: core_count
