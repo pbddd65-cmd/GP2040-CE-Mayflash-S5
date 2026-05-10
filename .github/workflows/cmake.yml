@@ -33,6 +33,7 @@ jobs:
       with:
         fetch-depth: 0
         fetch-tags: true
+        submodules: recursive
 
     - name: Setup SDK pipeline
       uses: Fortinbra/RaspberryPiPicoBuild@v3
