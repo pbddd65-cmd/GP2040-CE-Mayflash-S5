@@ -27,7 +27,18 @@ jobs:
 
     - name: Build WWW
       working-directory: ${{github.workspace}}/www
-      run: CI=false npm run build --if-present
+      run: npm run build
+
+    - name: Verify build output
+      working-directory: ${{github.workspace}}/www
+      run: ls -la build/
+
+    - name: Run makefsdata
+      working-directory: ${{github.workspace}}/www
+      run: npm run makefsdata
+
+    - name: Verify fsdata.c
+      run: ls -la ${{github.workspace}}/lib/httpd/fsdata.c
 
     - name: Upload www Artifact
       uses: actions/upload-artifact@v4.3.1
