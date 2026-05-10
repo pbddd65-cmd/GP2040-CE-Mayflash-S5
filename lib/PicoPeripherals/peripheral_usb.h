@@ -3,7 +3,7 @@
 
 #include <hardware/gpio.h>
 #include <hardware/platform_defs.h>
-#include "pio_usb.h"
+#include <pio_usb.h>
 
 #ifndef USB_PERIPHERAL_ENABLED
 #define USB_PERIPHERAL_ENABLED 0
