@@ -22,6 +22,7 @@ jobs:
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         GP2040_BOARDCONFIG: [Pico, PicoW, BentoBox, FightboardV3, FightboardV3Mirrored, FlatboxRev4, FlatboxRev5, FlatboxRev5RGB, FlatboxRev5Southpaw, Granola, KB2040, KeyboardConverter, Haute42COSMOX, Liatris, Mavercade, OpenCore0, OpenCore0WASD, PicoAnn, PicoFightingBoard, RanaTadpole, ReflexCtrlGenesis6, ReflexCtrlNES, ReflexCtrlSaturn, ReflexCtrlSNES, ReflexCtrlVB, ReflexEncodeV1.2, ReflexEncodeV2.0, RP2040AdvancedBreakoutBoard, RP2040AdvancedBreakoutBoardUSBPassthrough, RP2040MiniBreakoutBoard, SparkFunProMicro, WaveshareZero, Stress, SGFBridget, SGFFaust]
 
