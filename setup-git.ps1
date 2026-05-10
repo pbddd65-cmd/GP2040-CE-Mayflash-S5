@@ -9,11 +9,11 @@ Write-Host "============================================" -ForegroundColor Cyan
 Write-Host ""
 
 # Check if git is available
-$gitCheck = cmd /c "git --version 2>&1"
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "ERROR: Git is not installed!" -ForegroundColor Red
-    Write-Host "Please install Git from: https://git-scm.com/download/win" -ForegroundColor Yellow
-    Write-Host "Then run this script again." -ForegroundColor Yellow
+$gitPath = "C:\Program Files\Git\bin\git.exe"
+if (-not (Test-Path $gitPath)) {
+    Write-Host "ERROR: Git not found at expected location!" -ForegroundColor Red
+    Write-Host "Please reinstall Git from: https://git-scm.com/download/win" -ForegroundColor Yellow
+    Write-Host "Or check if Git is installed in a different location." -ForegroundColor Yellow
     Read-Host "Press Enter to exit"
     exit 1
 }
@@ -36,23 +36,23 @@ if (-not (Test-Path "CMakeLists.txt")) {
 }
 
 Write-Host "Initializing Git repository..." -ForegroundColor Yellow
-git init
+& $gitPath init
 
 Write-Host ""
 Write-Host "Configuring Git user..." -ForegroundColor Yellow
 $gitname = Read-Host "Enter your name (for Git commits)"
 $gitemail = Read-Host "Enter your email (for Git commits)"
 
-git config user.email $gitemail
-git config user.name $gitname
+& $gitPath config user.email $gitemail
+& $gitPath config user.name $gitname
 
 Write-Host ""
 Write-Host "Adding all files..." -ForegroundColor Yellow
-git add .
+& $gitPath add .
 
 Write-Host ""
 Write-Host "Creating initial commit..." -ForegroundColor Yellow
-git commit -m "Initial commit: GP2040-CE with Mayflash S5 PS5 Passthrough modifications"
+& $gitPath commit -m "Initial commit: GP2040-CE with Mayflash S5 PS5 Passthrough modifications"
 
 Write-Host ""
 Write-Host ""
